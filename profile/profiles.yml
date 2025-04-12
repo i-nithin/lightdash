@@ -1,0 +1,12 @@
+saas_analytics:
+  outputs:
+    dev:
+      type: postgres
+      dbname: "{{ env_var('PGDATABASE') }}"
+      host: "{{ env_var('PGHOST') }}"
+      user: "{{ env_var('PGUSER') }}"
+      pass: "{{ env_var('PGPASSWORD') }}"
+      port: "{{ env_var('DB_PORT') | int }}"
+      schema: public
+      threads: 1
+  target: dev

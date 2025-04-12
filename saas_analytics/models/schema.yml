@@ -1,0 +1,142 @@
+version: 2
+
+sources:
+  - name: public
+    database: saas_data
+    schema: public
+    tables:
+      - name: payments
+      - name: subscriptions
+      - name: visits
+      - name: users
+
+models:
+  - name: stg_users
+    description: 'Staging model for users'
+    columns:
+      - name: id
+        description: 'User ID'
+        meta:
+          dimension:
+            type: string
+          metric:
+            type: count
+            label: Total Users
+            description: Total number of users
+      - name: name
+        description: 'Full name'
+        meta:
+          dimension:
+            type: string
+      - name: email
+        description: 'Email address'
+        meta:
+          dimension:
+            type: string
+      - name: signup_date
+        description: 'Date the user signed up'
+        meta:
+          dimension:
+            type: date
+      - name: source
+        description: 'Acquisition source'
+        meta:
+          dimension:
+            type: string
+
+  - name: stg_payments
+    description: 'Staging model for payments'
+    columns:
+      - name: id
+        description: 'Payment ID'
+        meta:
+          dimension:
+            type: string
+          metric:
+            type: count
+            label: Total Payments
+            description: Number of payments made
+      - name: user_id
+        description: 'ID of the user who made the payment'
+        meta:
+          dimension:
+            type: string
+      - name: amount
+        description: 'Payment amount in USD'
+        meta:
+          dimension:
+            type: number
+          metric:
+            type: sum
+            label: Total Revenue
+            description: Total revenue from payments
+      - name: payment_date
+        description: 'Date of the payment'
+        meta:
+          dimension:
+            type: date
+
+  - name: stg_subscriptions
+    description: 'Staging model for subscriptions'
+    columns:
+      - name: id
+        description: 'Subscription ID'
+        meta:
+          dimension:
+            type: string
+          metric:
+            type: count
+            label: Total Subscriptions
+            description: Total number of subscriptions
+      - name: user_id
+        description: 'ID of the subscribed user'
+        meta:
+          dimension:
+            type: string
+      - name: start_date
+        description: 'Start date of the subscription'
+        meta:
+          dimension:
+            type: date
+      - name: end_date
+        description: 'End date of the subscription (if any)'
+        meta:
+          dimension:
+            type: date
+      - name: price_usd
+        description: 'Price of the subscription in USD'
+        meta:
+          dimension:
+            type: number
+          metric:
+            type: sum
+            label: Total Subscription Revenue
+            description: Total revenue from subscriptions
+
+  - name: stg_visits
+    description: 'Staging model for user website visits'
+    columns:
+      - name: id
+        description: 'Visit ID'
+        meta:
+          dimension:
+            type: string
+          metric:
+            type: count
+            label: Total Visits
+            description: Total number of website visits
+      - name: user_id
+        description: 'ID of the visiting user'
+        meta:
+          dimension:
+            type: string
+      - name: visit_date
+        description: 'Date of the visit'
+        meta:
+          dimension:
+            type: date
+      - name: page
+        description: 'Page that was visited'
+        meta:
+          dimension:
+            type: string

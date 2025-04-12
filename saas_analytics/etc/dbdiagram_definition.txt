@@ -1,0 +1,33 @@
+Table users {
+  id int PK
+  name varchar
+  email varchar
+  signup_date date
+  source varchar
+}
+
+Table payments {
+  id int PK
+  user_id int
+  amount int
+  payment_date date
+}
+
+Table subscriptions {
+  id int PK
+  user_id int
+  start_date date
+  end_date date
+  price_usd int
+}
+
+Table visits {
+  id int PK
+  user_id int
+  visit_date date
+  page varchar
+}
+
+Ref: payments.user_id > users.id  
+Ref: subscriptions.user_id > users.id  
+Ref: visits.user_id > users.id
