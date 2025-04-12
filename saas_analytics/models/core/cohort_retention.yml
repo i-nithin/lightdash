@@ -1,0 +1,26 @@
+models:
+  - name: cohort_retention
+    columns:
+      - name: cohort_month
+        description: The month users signed up (cohort group)
+        meta:
+          dimension:
+            type: date
+      - name: visit_month
+        description: The month users returned
+        meta:
+          dimension:
+            type: date
+      - name: retained_users
+        description: Number of users retained in the cohort for the visit month
+        meta:
+          dimension:
+            type: number
+
+    meta:
+      metrics:
+        - name: retained_users
+          label: Retained Users
+          description: Number of users from a cohort who returned in a given month
+          type: sum
+          sql: retained_users
