@@ -39,7 +39,7 @@ I built this to explore how Lightdash can help teams define metrics once and emp
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/saas-data-generator.git
+git clone https://github.com/i-nithin/lightdash.git
 cd saas-analytics
 ```
 
