@@ -73,10 +73,10 @@ PGPORT=5432
 ```bash
 python3 data_gen/load_mock_data.py
 
-> This script will:
->
-> - Create tables if not exist
-> - Insert fake user, visit, subscription & payment data
+This script will:
+ - Create tables if not exist
+ - Insert fake user, visit, subscription & payment data
+```
 
 ## 🥪 Sample Tables Created
 
