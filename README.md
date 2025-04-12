@@ -67,12 +67,11 @@ PGDATABASE=your_database_name
 PGUSER=your_user
 PGPASSWORD=your_password
 PGPORT=5432
-
+````
 ### 5️⃣ Run the Mock Data Generator
 
 ```bash
 python3 data_gen/load_mock_data.py
-````
 
 > This script will:
 >
